@@ -1,17 +1,8 @@
 import React from "react";
 import { View,Text,StyleSheet,TouchableOpacity } from "react-native";
 const stackscreen = () => {
-    return(
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <View>
-                    <Text style = {styles.title}>Riegos
-                    </Text>
-            </View>
-            </View>
-        </View>
-    );
-}
+    return
+    }
 
 const styles = StyleSheet.create({
     container: {

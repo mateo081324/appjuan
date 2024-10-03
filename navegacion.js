@@ -13,7 +13,7 @@ function MyTabs(){
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={MyStack} />
-            <Tab.Screen name="secondscreen" component={SecondScreen} />
+            <Tab.Screen name="Cambiar Riego" component={SecondScreen} />
         </Tab.Navigator>
     )
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { View,Text,StyleSheet,TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+
 const SpotiApp = () => {
     const navegacion =  useNavigation();
 
@@ -11,7 +12,7 @@ const SpotiApp = () => {
       <Text style={styles.title}>Spoti</Text>
       </View>
       <View style={styles.main}>
-        <TouchableOpacity style={styles.button} onPress={() => { /* Navegación a otra página */ }}>
+        <TouchableOpacity style={styles.button} onPress={() => { openBluetoothSettings }}>
           <Text style={styles.btnText}>conectar mi maceta</Text>
         </TouchableOpacity>
 
@@ -19,7 +20,7 @@ const SpotiApp = () => {
         <TouchableOpacity
         style={styles.button} 
         onPress={() => {navegacion.navigate ("Stack")}}>
-          <Text style={styles.btnText1}>Seleccionar mi planta</Text>
+          <Text style={styles.btnText1}>¿Que tipo de planta tengo?</Text>
 
         </TouchableOpacity>
       </View>
@@ -46,8 +47,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 100,
-    fontFamily: 'Holy Friday.otf', // cambiar a tipografia q funcione
+    fontFamily: 'DancingScript-SemiBold', // cambiar a tipografia q funcione
     margin: 0,
+    alignItems: 'stretch'
   },
   floral: {
     width: 50,
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 24,
-    fontFamily: 'Cursive',// cambiar a tipografia q funcione
+    fontFamily: 'DancingScript-SemiBold.ttf',// cambiar a tipografia q funcione
     color: 'white',
     backgroundColor: '#3CB371',
     padding: 10,

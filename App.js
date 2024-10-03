@@ -1,9 +1,13 @@
+
 import React from "react";
 import Navegación from "./navegacion";
-// import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-// import { useFonts } from 'expo-font';
+import * as Font from 'expo-font'
+
+
 export default function SpotiApp (){
+  const [fontsLoaded] = Font.useFonts({
+    'DancingScript-SemiBold': require('./assets/fonts/DancingScript-SemiBold.ttf'), // Asegúrate de que la ruta sea correcta
+  });
 
     return(
       <Navegación/>
