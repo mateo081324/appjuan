@@ -8,31 +8,24 @@ const SpotiApp = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-      <Text >Spoti.</Text>
-        {/* <Image
-          // source={require('C:\Users\Datos\Downloads\planta.png')}
-          style={[styles.floral, styles.floralLeft]}
-          />
-        <Image
-          // source={require('./img/Juan-Roman-Riquelme-5.jpg')}
-          style={[styles.floral, styles.floralRight]}
-          /> */}
+      <Text style={styles.title}>Spoti</Text>
       </View>
       <View style={styles.main}>
         <TouchableOpacity style={styles.button} onPress={() => { /* Navegación a otra página */ }}>
           <Text style={styles.btnText}>conectar mi maceta</Text>
-
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={styles.button} onPress={() => { /* Navegación a otra página */ }}>
+        <TouchableOpacity
+        style={styles.button} 
+        onPress={() => {navegacion.navigate ("Stack")}}>
           <Text style={styles.btnText1}>Seleccionar mi planta</Text>
 
         </TouchableOpacity>
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>By: Juan, Dante, Mateo, Nahi</Text>
+        <Text>By: Juan, Dante, Mateo, Nahi</Text>
       </View>
     </View>
   );
@@ -52,8 +45,8 @@ const styles = StyleSheet.create({
     width: 400,
   },
   title: {
-    fontSize: 60,
-    fontFamily: 'HolyFriday.otf', // cambiar a tipografia q funcione
+    fontSize: 100,
+    fontFamily: 'Holy Friday.otf', // cambiar a tipografia q funcione
     margin: 0,
   },
   floral: {

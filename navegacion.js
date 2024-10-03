@@ -34,11 +34,15 @@ function MyStack(){
             <HomeStackNavigator.Screen
             name="Homescreen"
             component={HomeScreen}
+            options={{
+                headerShown : false
+            }}
             />
             <HomeStackNavigator.Screen
             name="Stack"
             component={stackscreen}
             />
         </HomeStackNavigator.Navigator>
+        
     )
 }
