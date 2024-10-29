@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "appnueva",
+    "name": "AppNueva",
     "slug": "appnueva",
-    "version": "1.0.0",
+    "version": "51.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -12,24 +12,45 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "Esta aplicación usa Bluetooth para conectarse a dispositivos cercanos.",
+        "NSBluetoothPeripheralUsageDescription": "Esta aplicación requiere Bluetooth para interactuar con dispositivos cercanos."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.juanpatoide.appnueva",
+      "permissions": [
+        "BLUETOOTH",
+        "BLUETOOTH_ADMIN",
+        "ACCESS_FINE_LOCATION",
+        "BLUETOOTH_SCAN",
+        "BLUETOOTH_ADVERTISE",
+        "BLUETOOTH_CONNECT"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-"plugins": [
+    "plugins": [
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/HolyFriday.otf"]
+          "custom": {
+            "HolyFriday": "./assets/fonts/HolyFriday.otf"
+          }
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2c586171-ccb7-4855-bc5c-ca1c0724164c"
+      }
+    },
+    "sdkVersion": "51.0.0"
   }
 }

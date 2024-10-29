@@ -1,27 +1,40 @@
-import React from "react";
-import { View,Text,StyleSheet,TouchableOpacity } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import BluetoothManager from "./BluetoothManager";  // Asegúrate de que la ruta es correcta
 
 const SpotiApp = () => {
-    const navegacion =  useNavigation();
+  const navigation = useNavigation();
+  const { scanForDevices, requestPermissions, devices, isScanning } = BluetoothManager();
+
+  // Solicitar permisos al montar el componente
+  useEffect(() => {
+    const checkPermissions = async () => {
+      const permissionsGranted = await requestPermissions();
+      if (!permissionsGranted) {
+        Alert.alert("Permisos necesarios", "Necesitamos permisos de Bluetooth para escanear dispositivos.");
+      }
+    };
+    checkPermissions();
+  }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-      <Text style={styles.title}>Spoti</Text>
+        <Text style={styles.title}>Spoti</Text>
       </View>
       <View style={styles.main}>
-        <TouchableOpacity style={styles.button} onPress={() => { openBluetoothSettings }}>
-          <Text style={styles.btnText}>conectar mi maceta</Text>
+        <TouchableOpacity style={styles.button} onPress={scanForDevices} disabled={isScanning}>
+          <Text style={styles.btnText}>
+            {isScanning ? "Escaneando..." : "Conectar mi maceta"}
+          </Text>
         </TouchableOpacity>
 
-
         <TouchableOpacity
-        style={styles.button} 
-        onPress={() => {navegacion.navigate ("Stack")}}>
-          <Text style={styles.btnText1}>¿Que tipo de planta tengo?</Text>
-
+          style={styles.button} 
+          onPress={() => Linking.openURL("https://quieromasplantas.com/?s=cactus")}
+        >
+          <Text style={styles.btnText1}>¿Qué tipo de planta tengo?</Text>
         </TouchableOpacity>
       </View>
 
@@ -35,82 +48,50 @@ const SpotiApp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e8e2be',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#e8e2be",
     padding: 20,
   },
   header: {
-    alignItems: 'center',
-    position: 'relative',
+    alignItems: "center",
+    position: "relative",
     width: 400,
   },
   title: {
     fontSize: 100,
-    fontFamily: 'DancingScript-SemiBold', // cambiar a tipografia q funcione
+    fontFamily: "DancingScript-SemiBold",
     margin: 0,
-    alignItems: 'stretch'
-  },
-  floral: {
-    width: 50,
-    position: 'absolute',
-    top: 10,
-  },
-  floralLeft: {
-    left: 20,
-  },
-  floralRight: {
-    right: 20,
+    alignItems: "stretch",
   },
   main: {
     marginVertical: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   button: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 50,
     paddingVertical: 20,
     paddingHorizontal: 40,
     marginVertical: 20,
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-    position: 'relative',
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+    position: "relative",
   },
   btnText: {
     fontSize: 24,
-    fontFamily: 'DancingScript-SemiBold.ttf',// cambiar a tipografia q funcione
-    color: 'white',
-    backgroundColor: '#3CB371',
-    padding: 10,
-    borderRadius: 25,
-    textAlign: 'center',
+    fontFamily: "DancingScript-SemiBold",
+    color: "#3CB371",
+    textAlign: "center",
   },
-  
   btnText1: {
     fontSize: 24,
-    fontFamily: 'Cursive', // cambiar a tipografia q funcione
-    color: 'white',
-    backgroundColor: '#3CB371',
-    padding: 10,
-    borderRadius: 25,
-    textAlign: 'center',
-  },
-  
-  btnHover: {
-    backgroundColor: '#2e8b57',
-  },
-  description: {
-    fontSize: 16,
-    color: '#3CB371',
-    fontFamily: 'Arial',
-    marginVertical: 5,
+    fontFamily: "Cursive",
+    color: "#3CB371",
+    textAlign: "center",
   },
   footer: {
     marginTop: 20,
   },
-  footerText: {
-    fontSize: 16,
-    fontFamily: 'Arial',
-  },
 });
 
-export default SpotiApp;
+export default SpotiApp;
